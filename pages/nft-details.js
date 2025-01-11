@@ -84,8 +84,15 @@ const NFTDetails = () => {
     setPaymentModal(false);
     setSuccessModal(true);
   };
+  if (isLoading) {
+    return (
+      <div className="flexStart min-h-screen">
+        <Loader />
+      </div>
 
-  if (isLoading) return <Loader />;
+    );
+  }
+
   return (
     <div className="relative flex justify-center md:flex-col min-h-screen">
       <div className="relative flex-1 flexCenter sm:px-4 p-12
@@ -176,6 +183,7 @@ const NFTDetails = () => {
               )}
         </div>
       </div>
+
       {paymentModal && (
         <Modal
           header="Check Out"

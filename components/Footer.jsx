@@ -99,7 +99,7 @@ border-nft-gray-1 sm:py-8 py-16"
                   width={24}
                   height={24}
                   alt="social"
-                  className={theme === 'light' && 'filter invert'}
+                  className={theme === 'light' ? 'filter invert' : ''}
                 />
 
               </div>

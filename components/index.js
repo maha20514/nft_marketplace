@@ -8,7 +8,8 @@ import NFTCard from './NFTCard';
 import Input from './Input';
 import Loader from './Loader';
 import Modal from './Modal';
+import SearchBar from './SearchBar';
 
 export { Navbar, Footer, Button, Banner, CreatorCrad, NFTCard
-  , Input, Loader, Modal,
+  , Input, Loader, Modal, SearchBar,
 };
