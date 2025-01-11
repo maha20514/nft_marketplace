@@ -5,8 +5,7 @@ import { useTheme } from 'next-themes';
 import { NFTContext } from '../context/NFTContext';
 import { Banner, CreatorCrad, Loader, NFTCard, SearchBar } from '../components';
 import images from '../assets';
-import { getCreators } from '../utils/getTopCreators';
-import { shortenAddress } from '../utils/shortenAddress';
+import { getCreators, shortenAddress } from '../utils/util';
 
 const Home = () => {
   const [hideButtons, setHideButtons] = useState(false);
@@ -115,63 +114,48 @@ const Home = () => {
           </h1>
         ) : isLoading ? <Loader /> : (
           <>
-            <div>
-              <h1 className="font-poppins dark:text-white text-nft-black-1
-      text-2xl minlg:text-4xl font-semibold ml-4 xs:ml-0"
-              >Top Sellers
-              </h1>
-
-              <div
-                className="relative flex-1 max-w-full flex mt-3"
-                ref={parentRef}
-              >
+            <div
+              className="flex flex-row w-max overflow-x-scroll no-scroll select-none"
+              ref={scrollRef}
+            >
+              {topCreators.map((creator, i) => (
+                <CreatorCrad
+                  key={creator.seller}
+                  rank={i + 1}
+                  creatorImage={images[`creator${i + 1}`]}
+                  creatorName={shortenAddress(creator.seller)}
+                  creatorEths={creator.sum}
+                />
+              ))}
+              {!hideButtons && (
+              <div className="relative">
                 <div
-                  className="flex flex-row w-max overflow-x-scroll
-          no-scroll select-none"
-                  ref={scrollRef}
+                  onClick={() => handleScroll('left')}
+                  className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-12 cursor-pointer left-0"
                 >
-                  {topCreators.map((creator, i) => (
-                    <CreatorCrad
-                      key={creator.seller}
-                      rank={i + 1}
-                      creatorImage={images[`creator${i + 1}`]}
-                      creatorName={shortenAddress(creator.seller)}
-                      creatorEths={creator.sum}
-                    />
-                  ))}
-                  {!hideButtons && (
-                  <>
-                    <div
-                      onClick={() => handleScroll('left')}
-                      className="absolute w-8 h-8 minlg:w-12 minlg:h-12
-              top-45 cursor-pointer left-0"
-                    >
-                      <Image
-                        src={images.left}
-                        layout="fill"
-                        objectFit="contain"
-                        alt="left_arrow"
-                        className={theme === 'light' ? 'filter invert' : ''}
-                      />
-                    </div>
+                  <Image
+                    src={images.left}
+                    layout="fill"
+                    objectFit="contain"
+                    alt="left_arrow"
+                    className={theme === 'light' ? 'filter invert' : ''}
+                  />
+                </div>
 
-                    <div
-                      onClick={() => handleScroll('right')}
-                      className="absolute w-8 h-8 minlg:w-12 minlg:h-12
-              top-45 cursor-pointer right-0"
-                    >
-                      <Image
-                        src={images.right}
-                        layout="fill"
-                        objectFit="contain"
-                        alt="right_arrow"
-                        className={theme === 'light' ? 'filter invert' : ''}
-                      />
-                    </div>
-                  </>
-                  )}
+                <div
+                  onClick={() => handleScroll('right')}
+                  className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-12 cursor-pointer right-0"
+                >
+                  <Image
+                    src={images.right}
+                    layout="fill"
+                    objectFit="contain"
+                    alt="right_arrow"
+                    className={theme === 'light' ? 'filter invert' : ''}
+                  />
                 </div>
               </div>
+              )}
             </div>
 
             <div className="mt-10">

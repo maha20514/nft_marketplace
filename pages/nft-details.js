@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { NFTContext } from '../context/NFTContext';
 import { Loader, Button, Modal } from '../components';
 import images from '../assets';
-import { shortenAddress } from '../utils/shortenAddress';
+import { shortenAddress } from '../utils/util';
 
 const PaymentBodyCmp = ({ nft, nftCurrency }) => (
   <div className="flex flex-col">

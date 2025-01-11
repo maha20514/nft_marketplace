@@ -5,7 +5,7 @@ import { NFTContext } from '../context/NFTContext';
 import { Loader, NFTCard, Banner, SearchBar } from '../components';
 
 import images from '../assets';
-import { shortenAddress } from '../utils/shortenAddress';
+import { shortenAddress } from '../utils/util';
 
 const MyNFTs = () => {
   const { fetchMyNFTsOrListedNFTs, currentAccount } = useContext(NFTContext);
