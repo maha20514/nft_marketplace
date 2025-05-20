@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
