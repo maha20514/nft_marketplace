@@ -1,7 +1,3 @@
-Here is a professional `README.md` for your NFT Marketplace project, formatted for clarity and impact:
-
----
-
 # NFT Marketplace
 
 A decentralized NFT (Non-Fungible Token) Marketplace built with modern web3 technologies. This platform allows users to mint, buy, sell, and explore unique digital assets on the blockchain.
