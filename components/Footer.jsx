@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
 import images from '../assets';
 import Button from './Button';
+import PropTypes from 'prop-types'; // ✅ Import here
 
 const FooterLinks = ({ heading, items }) => (
   <div className="flex-1 justify-start items-start">
@@ -113,6 +113,11 @@ border-nft-gray-1 sm:py-8 py-16"
       </div>
     </footer>
   );
+};
+
+FooterLinks.propTypes = {
+  heading: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Footer;

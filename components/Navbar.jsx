@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/react-in-jsx-scope */
 import { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
+import PropTypes from 'prop-types'; // ✅ Import here
 
 import { NFTContext } from '../context/NFTContext';
 import images from '../assets';
@@ -218,4 +218,17 @@ const Navbar = () => {
   );
 };
 
+// ✅ Add prop types here
+MenuItems.propTypes = {
+  isMobile: PropTypes.bool,
+  active: PropTypes.string.isRequired,
+  setActive: PropTypes.func.isRequired,
+  setIsOpen: PropTypes.func,
+};
+
+ButtonGroup.propTypes = {
+  setActive: PropTypes.func.isRequired,
+  router: PropTypes.object.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
+};
 export default Navbar;
